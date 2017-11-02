@@ -1,6 +1,8 @@
 # Email Address
 
 [![Build Status](https://travis-ci.org/wmde/email-address.svg?branch=master)](https://travis-ci.org/wmde/email-address)
+[![Latest Stable Version](https://poser.pugx.org/wmde/email-address/version.png)](https://packagist.org/packages/wmde/email-address)
+[![Download count](https://poser.pugx.org/wmde/email-address/d/total.png)](https://packagist.org/packages/wmde/email-address)
 
 Email Address value object written in PHP 7.
 
