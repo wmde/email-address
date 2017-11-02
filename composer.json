@@ -1,9 +1,9 @@
 {
-	"name": "such/new-project",
+	"name": "wmde/email-address",
 	"license": "GPL-2.0+",
-	"description": "",
+	"description": "Email Address value object written in PHP 7",
 	"require": {
-		"php": ">=7.1"
+		"php": ">=7.0"
 	},
 	"require-dev": {
 		"phpunit/phpunit": "~6.2",
@@ -15,17 +15,17 @@
 	},
 	"autoload": {
 		"psr-4": {
-			"Such\\NewProject\\": "src/"
+			"WMDE\\EmailAddress\\": "src/"
 		}
 	},
 	"autoload-dev": {
 		"psr-4": {
-			"Such\\NewProject\\Tests\\": "tests/"
+			"WMDE\\EmailAddress\\Tests\\": "tests/"
 		}
 	},
 	"extra": {
 		"branch-alias": {
-			"dev-master": "0.1.x-dev"
+			"dev-master": "1.0.x-dev"
 		}
 	}
 }

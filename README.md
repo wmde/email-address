@@ -1,47 +1,33 @@
-# PHP Project Template
+# Email Address
 
-[![Build Status](https://travis-ci.org/JeroenDeDauw/new-php-project.svg?branch=master)](https://travis-ci.org/JeroenDeDauw/new-php-project)
+[![Build Status](https://travis-ci.org/wmde/email-address.svg?branch=master)](https://travis-ci.org/wmde/email-address)
 
-This is a template for starting new PHP projects. Copy or fork to get started quickly.
+Email Address value object written in PHP 7.
 
-(Update this section)
-
-## Contents
-
-* Ready-to-go PHPUnit (configuration and working bootstrap)
-* Ready-to-go PHPCS
-* Docker environment with PHP 7.1 and Composer (so you do not need to have PHP or Composer installed!)
-* Tests and style checks runnable in the Docker environment with simple `make` commands 
-* TravisCI ready
-* Code coverage creation on TravisCI and uploading to ScrutinizerCI (optional)
-* Coverage tag validation
-* Stub production and test classes for ultra-quick start (ideal when doing a kata)
-* COPYING and .gitignore files
-* README with instructions of how to run the tests
-
-(Delete this section)
-
-## Getting started
-
-* Copy the code or fork the repository
-* If you do not want to use the MediaWiki coding style, remove `mediawiki/mediawiki-codesniffer` from `composer.json`
-* If you want to support older PHP versions, update `composer.json` and remove new PHP features from the stub PHP files
-* If the code is not a kata or quick experiment, update the PHP namespaces and the README
-* Start writing code!
-* If you want TravisCI and/or ScrutinizerCI integration you will need to log in to their respective websites 
-
-(Delete this section)
+```php
+class EmailAddress {
+	public function __construct( string $emailAddress ) {
+		// Validation
+	}
+	public function getUserName(): string {}
+	public function getDomain(): string {}
+	public function getNormalizedDomain(): string {}
+	public function getFullAddress(): string {}
+	public function getNormalizedAddress(): string {}
+	public function __toString(): string {}
+}
+```
 
 ## Installation
 
-To use the UPDATE_NAME library in your project, simply add a dependency on UPDATE/NAME
+To use the Email Address library in your project, simply add a dependency on wmde/email-address
 to your project's `composer.json` file. Here is a minimal example of a `composer.json`
-file that just defines a dependency on UPDATE_NAME 1.x:
+file that just defines a dependency on Email Address 1.x:
 
 ```json
 {
     "require": {
-        "UPDATE/NAME": "~1.0"
+        "wmde/email-address": "~1.0"
     }
 }
 ```
