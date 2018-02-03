@@ -1,6 +1,6 @@
 {
 	"name": "wmde/email-address",
-	"license": "GPL-2.0+",
+	"license": "GPL-2.0-or-later",
 	"description": "Email Address value object written in PHP 7",
 	"require": {
 		"php": ">=7.0"
