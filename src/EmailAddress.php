@@ -4,6 +4,9 @@ declare( strict_types = 1 );
 
 namespace WMDE\EmailAddress;
 
+use const IDNA_NONTRANSITIONAL_TO_ASCII;
+use const INTL_IDNA_VARIANT_UTS46;
+
 /**
  * @licence GNU GPL v2+
  * @author Christoph Fischer < christoph.fischer@wikimedia.de >
@@ -38,7 +41,7 @@ class EmailAddress {
 	}
 
 	public function getNormalizedDomain(): string {
-		return (string)idn_to_ascii( $this->domain );
+		return (string)idn_to_ascii( $this->domain, IDNA_NONTRANSITIONAL_TO_ASCII, INTL_IDNA_VARIANT_UTS46 );
 	}
 
 	public function getFullAddress(): string {
