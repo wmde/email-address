@@ -1,8 +1,28 @@
 version: '2'
 
 services:
-  app:
-    build: .
+  email-address-7.0:
+    build:
+      context: .
+      args:
+        PHP_VERSION: 7.0
     volumes:
       - ./:/usr/src/app
     working_dir: /usr/src/app
+    image: wmde/email-address:7.0
+
+  email-address-7.1:
+    extends:
+      service: email-address-7.0
+    build:
+      args:
+        PHP_VERSION: 7.1
+    image: wmde/email-address:7.1
+
+  email-address-7.2:
+    extends:
+      service: email-address-7.0
+    build:
+      args:
+        PHP_VERSION: 7.2
+    image: wmde/email-address:7.2
