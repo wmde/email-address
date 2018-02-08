@@ -66,4 +66,4 @@ To run just the PHPUnit tests run
 
 To run only a subset of PHPUnit tests or otherwise pass flags to PHPUnit, run
 
-    docker-compose run --rm app ./vendor/bin/phpunit --filter SomeClassNameOrFilter
+    docker-compose run --rm email-address-7.1 ./vendor/bin/phpunit --filter SomeClassNameOrFilter
