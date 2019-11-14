@@ -18,7 +18,7 @@ class EmailAddressTest extends \PHPUnit\Framework\TestCase {
 	/**
 	 * @dataProvider unparsableAddressProvider
 	 */
-	public function testWhenGivenEmailWithMissingParts_mailCannotConstruct( string $mailToTest, string $expectedException ) {
+	public function testWhenGivenEmailWithMissingParts_mailCannotConstruct( string $mailToTest, string $expectedException ): void {
 		$this->expectException( \InvalidArgumentException::class );
 		$this->expectExceptionMessage( $expectedException );
 
@@ -36,40 +36,41 @@ class EmailAddressTest extends \PHPUnit\Framework\TestCase {
 		];
 	}
 
-	public function testGetFullAddressReturnsOriginalInput() {
+	public function testGetFullAddressReturnsOriginalInput(): void {
 		$email = new EmailAddress( 'jeroendedauw@gmail.com' );
 
 		$this->assertSame( 'jeroendedauw@gmail.com', $email->getFullAddress() );
 	}
 
-	public function testCanGetEmailParts() {
+	public function testCanGetEmailParts(): void {
 		$email = new EmailAddress( 'jeroendedauw@gmail.com' );
 
 		$this->assertSame( 'jeroendedauw', $email->getUserName() );
 		$this->assertSame( 'gmail.com', $email->getDomain() );
 	}
 
-	public function testCanGetEmailPartsWithDelimiterInLocalName() {
+	public function testCanGetEmailPartsWithDelimiterInLocalName(): void {
 		$email = new EmailAddress( '"m@aster.of.the.universe"@gmail.com' );
 
 		$this->assertSame( '"m@aster.of.the.universe"', $email->getUserName() );
 		$this->assertSame( 'gmail.com', $email->getDomain() );
 	}
-	public function testCanNormalizedDomainName() {
+
+	public function testCanNormalizedDomainName(): void {
 		$email = new EmailAddress( 'info@triebwerk-grün.de' );
 
 		$this->assertSame( 'xn--triebwerk-grn-7ob.de', $email->getNormalizedDomain() );
 		$this->assertSame( 'info@xn--triebwerk-grn-7ob.de', $email->getNormalizedAddress() );
 	}
 
-	public function testInvalidDomainNamesAreNormalizedToEmpty() {
+	public function testInvalidDomainNamesAreNormalizedToEmpty(): void {
 		$email = new EmailAddress( 'oh_boy@...' );
 
 		$this->assertSame( '', $email->getNormalizedDomain() );
 		$this->assertSame( 'oh_boy@', $email->getNormalizedAddress() );
 	}
 
-	public function testToStringOriginalInput() {
+	public function testToStringOriginalInput(): void {
 		$email = new EmailAddress( 'jeroendedauw@gmail.com' );
 
 		$this->assertSame( 'jeroendedauw@gmail.com', (string)$email->getFullAddress() );
