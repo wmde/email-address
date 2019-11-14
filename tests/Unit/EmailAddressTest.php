@@ -18,25 +18,22 @@ class EmailAddressTest extends \PHPUnit\Framework\TestCase {
 	/**
 	 * @dataProvider unparsableAddressProvider
 	 */
-	public function testWhenGivenMail_validatorMXValidatesCorrectly( string $mailToTest ) {
+	public function testWhenGivenEmailWithMissingParts_mailCannotConstruct( string $mailToTest, string $expectedException ) {
 		$this->expectException( \InvalidArgumentException::class );
-		$this->expectExceptionMessage( 'Given email address could not be parsed' );
+		$this->expectExceptionMessage( $expectedException );
 
 		new EmailAddress( $mailToTest );
 	}
 
 	public function unparsableAddressProvider(): array {
 		return [
-			[ 'just.testing' ],
-			[ 'can.you@deliver@this' ],
-			[ '' ],
-			[ ' ' ]
+			[ 'just.testing', 'Email must contain "@" character' ],
+			[ '@example.com', 'Local part of email cannot be empty' ],
+			[ '', 'Email must contain "@" character' ],
+			[ '@', 'Email domain cannot be empty' ],
+			[ ' ', 'Email must contain "@" character' ],
+			[ 'jeroendedauw@', 'Email domain cannot be empty' ]
 		];
-	}
-
-	public function testWhenDomainIsEmpty_constructorThrowsException() {
-		$this->expectException( \InvalidArgumentException::class );
-		new EmailAddress( 'jeroendedauw@' );
 	}
 
 	public function testGetFullAddressReturnsOriginalInput() {
@@ -52,6 +49,12 @@ class EmailAddressTest extends \PHPUnit\Framework\TestCase {
 		$this->assertSame( 'gmail.com', $email->getDomain() );
 	}
 
+	public function testCanGetEmailPartsWithDelimiterInLocalName() {
+		$email = new EmailAddress( '"m@aster.of.the.universe"@gmail.com' );
+
+		$this->assertSame( '"m@aster.of.the.universe"', $email->getUserName() );
+		$this->assertSame( 'gmail.com', $email->getDomain() );
+	}
 	public function testCanNormalizedDomainName() {
 		$email = new EmailAddress( 'info@triebwerk-grün.de' );
 
