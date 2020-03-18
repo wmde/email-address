@@ -18,17 +18,19 @@ class EmailAddress {
 	private $domain;
 
 	public function __construct( string $emailAddress ) {
-		$addressParts = explode( '@', $emailAddress );
-
-		if ( !is_array( $addressParts ) || count( $addressParts ) !== 2 ) {
-			throw new \InvalidArgumentException( 'Given email address could not be parsed' );
+		$delimiter = strrpos( $emailAddress, '@' );
+		if ( $delimiter === false ) {
+			throw new \InvalidArgumentException( 'Email must contain "@" character' );
 		}
-
-		$this->userName = $addressParts[0];
-		$this->domain = $addressParts[1];
+		$this->userName = substr( $emailAddress, 0, $delimiter );
+		$this->domain = substr( $emailAddress, $delimiter + 1 );
 
 		if ( trim( $this->domain ) === '' ) {
 			throw new \InvalidArgumentException( 'Email domain cannot be empty' );
+		}
+
+		if ( trim( $this->userName ) === '' ) {
+			throw new \InvalidArgumentException( 'Local part of email cannot be empty' );
 		}
 	}
 

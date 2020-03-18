@@ -29,7 +29,7 @@ file that just defines a dependency on Email Address 1.x:
 ```json
 {
     "require": {
-        "wmde/email-address": "~1.0"
+        "wmde/email-address": "~2.0"
     }
 }
 ```
@@ -67,3 +67,4 @@ To run just the PHPUnit tests run
 To run only a subset of PHPUnit tests or otherwise pass flags to PHPUnit, run
 
     docker-compose run --rm email-address-7.1 ./vendor/bin/phpunit --filter SomeClassNameOrFilter
+
