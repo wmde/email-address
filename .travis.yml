@@ -2,13 +2,13 @@ language: php
 
 # php version to use for travis' composer & coverage
 php:
-  - 7.3
+  - 7.4
 
 services:
   - docker
 
 install:
-  - travis_retry make composer install
+  - travis_retry composer install
 
 script:
   - composer validate --no-interaction

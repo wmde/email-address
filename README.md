@@ -24,7 +24,7 @@ class EmailAddress {
 
 To use the Email Address library in your project, simply add a dependency on wmde/email-address
 to your project's `composer.json` file. Here is a minimal example of a `composer.json`
-file that just defines a dependency on Email Address 1.x:
+file that just defines a dependency on Email Address 2.x:
 
 ```json
 {
@@ -60,11 +60,11 @@ To run all CI checks, which includes PHPUnit tests, PHPCS style checks and cover
     
 ### Running the tests
 
-To run just the PHPUnit tests run
+To run the PHPUnit tests run
 
     make test
 
-To run only a subset of PHPUnit tests or otherwise pass flags to PHPUnit, run
+To run a subset of PHPUnit tests or otherwise pass flags to PHPUnit, run
 
-    docker-compose run --rm email-address-7.1 ./vendor/bin/phpunit --filter SomeClassNameOrFilter
+    docker-compose run --rm email-address ./vendor/bin/phpunit --filter SomeClassNameOrFilter
 
