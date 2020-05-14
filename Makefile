@@ -15,16 +15,16 @@ test: covers phpunit
 cs: phpcs stan
 
 phpunit:
-	docker-compose run --rm email-address-7.3 ./vendor/bin/phpunit
+	docker-compose run --rm email-address ./vendor/bin/phpunit
 
 phpcs:
-	docker-compose run --rm email-address-7.3 ./vendor/bin/phpcs
+	docker-compose run --rm email-address ./vendor/bin/phpcs
 
 stan:
-	docker-compose run --rm email-address-7.3 ./vendor/bin/phpstan analyse --level=1 --no-progress src/ tests/
+	docker-compose run --rm email-address ./vendor/bin/phpstan analyse --level=1 --no-progress src/ tests/
 
 covers:
-	docker-compose run --rm email-address-7.3 ./vendor/bin/covers-validator
+	docker-compose run --rm email-address ./vendor/bin/covers-validator
 
 composer:
 	docker run --rm --interactive --tty --volume $(shell pwd):/app -w /app\

@@ -1,14 +1,10 @@
 version: '2'
 
 services:
-  email-address-7.3:
-    build:
-      context: .
-      args:
-        PHP_VERSION: 7.3
+  email-address:
     volumes:
       - ./:/usr/src/app
     working_dir: /usr/src/app
-    image: wmde/email-address:7.3
+    image: wikimediade/fundraising-frontend:latest
 
 
