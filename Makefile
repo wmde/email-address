@@ -31,4 +31,4 @@ phpcs:
 	docker-compose run --rm email-address ./vendor/bin/phpcs
 
 stan:
-	docker-compose run --rm email-address ./vendor/bin/phpstan analyse --level=1 --no-progress src/ tests/
+	docker-compose run --rm email-address ./vendor/bin/phpstan analyse --level=9 --no-progress src/ tests/
