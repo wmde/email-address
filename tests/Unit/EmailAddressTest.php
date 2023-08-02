@@ -25,7 +25,7 @@ class EmailAddressTest extends \PHPUnit\Framework\TestCase {
 		new EmailAddress( $mailToTest );
 	}
 
-	public function unparsableAddressProvider(): array {
+	public static function unparsableAddressProvider(): array {
 		return [
 			[ 'just.testing', 'Email must contain "@" character' ],
 			[ '@example.com', 'Local part of email cannot be empty' ],

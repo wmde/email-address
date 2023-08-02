@@ -6,11 +6,11 @@ ifeq (composer,$(firstword $(MAKECMDGOALS)))
   $(eval $(RUN_ARGS):;@:)
 endif
 
-.PHONY: ci test phpunit cs stan covers composer
+.PHONY: ci test phpunit cs stan composer
 
 ci: test cs
 
-test: covers phpunit
+test: phpunit
 
 cs: phpcs stan
 
@@ -23,8 +23,6 @@ phpcs:
 stan:
 	docker-compose run --rm email-address ./vendor/bin/phpstan analyse --level=1 --no-progress src/ tests/
 
-covers:
-	docker-compose run --rm email-address ./vendor/bin/covers-validator
 
 composer:
 	docker run --rm --interactive --tty --volume $(shell pwd):/app -w /app\
