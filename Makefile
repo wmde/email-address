@@ -25,10 +25,13 @@ update:
 	docker run --rm $(DOCKER_FLAGS) --volume $(BUILD_DIR):/app -w /app --volume /tmp:/tmp --volume ~/.composer:/composer --user $(current_user):$(current_group) $(DOCKER_IMAGE):composer composer update $(COMPOSER_FLAGS)
 
 phpunit:
-	docker-compose run --rm email-address ./vendor/bin/phpunit
+	docker-compose run --rm app ./vendor/bin/phpunit
 
 phpcs:
-	docker-compose run --rm email-address ./vendor/bin/phpcs
+	docker-compose run --rm app ./vendor/bin/phpcs
 
 stan:
-	docker-compose run --rm email-address ./vendor/bin/phpstan analyse --level=9 --no-progress src/ tests/
+	docker-compose run --rm app ./vendor/bin/phpstan analyse --level=9 --no-progress src/ tests/
+
+fix-cs:
+	docker-compose run --rm app ./vendor/bin/phpcbf

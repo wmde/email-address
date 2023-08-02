@@ -36,10 +36,6 @@ file that just defines a dependency on Email Address 2.x:
 
 ## Development
 
-For development you need to have Docker and Docker-compose installed. Local PHP and Composer are not needed.
-
-    sudo apt-get install docker docker-compose
-
 ### Installing dependencies
 
 To pull in the project dependencies via Composer, run:
@@ -64,5 +60,5 @@ To run the PHPUnit tests run
 
 To run a subset of PHPUnit tests or otherwise pass flags to PHPUnit, run
 
-    docker-compose run --rm email-address ./vendor/bin/phpunit --filter SomeClassNameOrFilter
+    docker-compose run --rm app ./vendor/bin/phpunit --filter SomeClassNameOrFilter
 

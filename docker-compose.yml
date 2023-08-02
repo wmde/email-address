@@ -1,9 +1,8 @@
 version: '2'
 
 services:
-  email-address:
+  app:
     volumes:
       - ./:/usr/src/app
     working_dir: /usr/src/app
     image: registry.gitlab.com/fun-tech/fundraising-frontend-docker
-
