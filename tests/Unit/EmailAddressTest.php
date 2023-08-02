@@ -4,16 +4,13 @@ declare( strict_types = 1 );
 
 namespace WMDE\EmailAddress\Tests\Unit;
 
+use PHPUnit\Framework\TestCase;
 use WMDE\EmailAddress\EmailAddress;
 
 /**
  * @covers \WMDE\EmailAddress\EmailAddress
- *
- * @licence GNU GPL v2+
- * @author Kai Nissen < kai.nissen@wikimedia.de >
- * @author Jeroen De Dauw < jeroendedauw@gmail.com >
  */
-class EmailAddressTest extends \PHPUnit\Framework\TestCase {
+class EmailAddressTest extends TestCase {
 
 	/**
 	 * @dataProvider unparsableAddressProvider

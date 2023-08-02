@@ -7,15 +7,10 @@ namespace WMDE\EmailAddress;
 use const IDNA_NONTRANSITIONAL_TO_ASCII;
 use const INTL_IDNA_VARIANT_UTS46;
 
-/**
- * @licence GNU GPL v2+
- * @author Christoph Fischer < christoph.fischer@wikimedia.de >
- * @author Kai Nissen < kai.nissen@wikimedia.de >
- */
 class EmailAddress {
 
-	private $userName;
-	private $domain;
+	private string $userName;
+	private string $domain;
 
 	public function __construct( string $emailAddress ) {
 		$delimiter = strrpos( $emailAddress, '@' );
