@@ -2,7 +2,9 @@ language: php
 
 # php version to use for travis' composer & coverage
 php:
-  - 7.4
+  - 8.2
+
+dist: focal
 
 services:
   - docker

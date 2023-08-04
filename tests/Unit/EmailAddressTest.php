@@ -4,16 +4,13 @@ declare( strict_types = 1 );
 
 namespace WMDE\EmailAddress\Tests\Unit;
 
+use PHPUnit\Framework\TestCase;
 use WMDE\EmailAddress\EmailAddress;
 
 /**
  * @covers \WMDE\EmailAddress\EmailAddress
- *
- * @licence GNU GPL v2+
- * @author Kai Nissen < kai.nissen@wikimedia.de >
- * @author Jeroen De Dauw < jeroendedauw@gmail.com >
  */
-class EmailAddressTest extends \PHPUnit\Framework\TestCase {
+class EmailAddressTest extends TestCase {
 
 	/**
 	 * @dataProvider unparsableAddressProvider
@@ -25,15 +22,16 @@ class EmailAddressTest extends \PHPUnit\Framework\TestCase {
 		new EmailAddress( $mailToTest );
 	}
 
-	public function unparsableAddressProvider(): array {
-		return [
-			[ 'just.testing', 'Email must contain "@" character' ],
-			[ '@example.com', 'Local part of email cannot be empty' ],
-			[ '', 'Email must contain "@" character' ],
-			[ '@', 'Email domain cannot be empty' ],
-			[ ' ', 'Email must contain "@" character' ],
-			[ 'jeroendedauw@', 'Email domain cannot be empty' ]
-		];
+	/**
+	 * @return iterable<array{string, string}>
+	 */
+	public static function unparsableAddressProvider(): iterable {
+		yield [ 'just.testing', 'Email must contain "@" character' ];
+		yield [ '@example.com', 'Local part of email cannot be empty' ];
+		yield [ '', 'Email must contain "@" character' ];
+		yield [ '@', 'Email domain cannot be empty' ];
+		yield [ ' ', 'Email must contain "@" character' ];
+		yield [ 'jeroendedauw@', 'Email domain cannot be empty' ];
 	}
 
 	public function testGetFullAddressReturnsOriginalInput(): void {

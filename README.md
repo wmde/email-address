@@ -1,10 +1,13 @@
 # Email Address
 
-[![Build Status](https://travis-ci.org/wmde/email-address.svg?branch=master)](https://travis-ci.org/wmde/email-address)
+[![Build Status](https://travis-ci.org/wmde/email-address.svg?branch=main)](https://travis-ci.org/wmde/email-address)
 [![Latest Stable Version](https://poser.pugx.org/wmde/email-address/version.png)](https://packagist.org/packages/wmde/email-address)
 [![Download count](https://poser.pugx.org/wmde/email-address/d/total.png)](https://packagist.org/packages/wmde/email-address)
 
-Email Address value object written in PHP 7.
+Email Address value object that can
+
+- split username and domain 
+- normalize Internationalized Domain names (IDN).
 
 ```php
 class EmailAddress {
@@ -36,25 +39,19 @@ file that just defines a dependency on Email Address 2.x:
 
 ## Development
 
-For development you need to have Docker and Docker-compose installed. Local PHP and Composer are not needed.
-
-    sudo apt-get install docker docker-compose
-
-### Running Composer
+### Installing dependencies
 
 To pull in the project dependencies via Composer, run:
 
-    make composer install
+    make install
 
-You can run other Composer commands via `make run`, but at present this does not support argument flags.
-If you need to execute such a command, you can do so in this format:
+To update them, run
 
-    docker run --rm --interactive --tty --volume $PWD:/app -w /app\
-     --volume ~/.composer:/composer --user $(id -u):$(id -g) composer composer install -vvv
+    make update
 
 ### Running the CI checks
 
-To run all CI checks, which includes PHPUnit tests, PHPCS style checks and coverage tag validation, run:
+To run all CI checks, which includes PHPUnit tests, PHPCS style checks and static analysis with PHPStan, run:
 
     make
     
@@ -66,5 +63,5 @@ To run the PHPUnit tests run
 
 To run a subset of PHPUnit tests or otherwise pass flags to PHPUnit, run
 
-    docker-compose run --rm email-address ./vendor/bin/phpunit --filter SomeClassNameOrFilter
+    docker-compose run --rm app ./vendor/bin/phpunit --filter SomeClassNameOrFilter
 
