@@ -4,19 +4,18 @@ declare( strict_types = 1 );
 
 namespace WMDE\EmailAddress\Tests\Unit;
 
+use InvalidArgumentException;
+use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\TestCase;
 use WMDE\EmailAddress\EmailAddress;
 
-/**
- * @covers \WMDE\EmailAddress\EmailAddress
- */
+#[CoversClass( EmailAddress::class )]
 class EmailAddressTest extends TestCase {
 
-	/**
-	 * @dataProvider unparsableAddressProvider
-	 */
+	#[DataProvider( 'unparsableAddressProvider' )]
 	public function testWhenGivenEmailWithMissingParts_mailCannotConstruct( string $mailToTest, string $expectedException ): void {
-		$this->expectException( \InvalidArgumentException::class );
+		$this->expectException( InvalidArgumentException::class );
 		$this->expectExceptionMessage( $expectedException );
 
 		new EmailAddress( $mailToTest );
