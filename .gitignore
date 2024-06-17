@@ -3,7 +3,6 @@
 .idea/
 
 composer.phar
-composer.lock
 
 vendor/
 
