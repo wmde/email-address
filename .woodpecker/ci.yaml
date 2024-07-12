@@ -1,0 +1,22 @@
+steps:
+    - name: build
+      when:
+          - event: [ push, pull_request, cron, manual ]
+      image: registry.gitlab.com/fun-tech/fundraising-frontend-docker:latest
+      environment:
+          COMPOSER_CACHE_DIR: /composer_cache
+          GITHUB_TOKEN:
+              from_secret: github_token
+      volumes:
+          # host path : image path
+          - /tmp/woodpeckerci/cache:/composer/cache
+      commands:
+          # Environment setup
+          - echo -e "machine github.com\n  login $GITHUB_TOKEN" > ~/.netrc
+          - composer config -g github-oauth.github.com "$GITHUB_TOKEN"
+          - composer install --prefer-dist --no-progress --no-interaction
+          # CI
+          - vendor/bin/phpcs
+          - php -d xdebug.mode=coverage vendor/bin/phpunit --coverage-clover coverage.xml
+          - php -d memory_limit=1G vendor/bin/phpstan analyse --level=9 --no-progress src/ tests/
+
