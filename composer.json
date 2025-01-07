@@ -6,7 +6,7 @@
 		"php": ">=8.3"
 	},
 	"require-dev": {
-		"phpstan/phpstan": "^1.10",
+		"phpstan/phpstan": "^2.1",
 		"phpunit/phpunit": "~11.0",
 		"wmde/fundraising-phpcs": "~12.0"
 	},
