@@ -17,21 +17,21 @@ cs: phpcs stan
 install-php: install
 
 install:
-	docker run --rm $(DOCKER_FLAGS) --volume $(BUILD_DIR):/app -w /app --volume /tmp:/tmp --volume ~/.composer:/composer --user $(current_user):$(current_group) $(DOCKER_IMAGE):composer composer install $(COMPOSER_FLAGS)
+	docker run --rm $(DOCKER_FLAGS) --volume $(BUILD_DIR):/app -w /app --volume /tmp:/tmp --volume ~/.composer:/composer --user $(current_user):$(current_group) $(DOCKER_IMAGE) composer install $(COMPOSER_FLAGS)
 
 update-php: update
 
 update:
-	docker run --rm $(DOCKER_FLAGS) --volume $(BUILD_DIR):/app -w /app --volume /tmp:/tmp --volume ~/.composer:/composer --user $(current_user):$(current_group) $(DOCKER_IMAGE):composer composer update $(COMPOSER_FLAGS)
+	docker run --rm $(DOCKER_FLAGS) --volume $(BUILD_DIR):/app -w /app --volume /tmp:/tmp --volume ~/.composer:/composer --user $(current_user):$(current_group) $(DOCKER_IMAGE) composer update $(COMPOSER_FLAGS)
 
 phpunit:
-	docker-compose run --rm app ./vendor/bin/phpunit
+	docker compose run --rm app ./vendor/bin/phpunit
 
 phpcs:
-	docker-compose run --rm app ./vendor/bin/phpcs
+	docker compose run --rm app ./vendor/bin/phpcs
 
 stan:
-	docker-compose run --rm app ./vendor/bin/phpstan analyse --level=9 --no-progress src/ tests/
+	docker compose run --rm app ./vendor/bin/phpstan analyse --level=9 --no-progress src/ tests/
 
 fix-cs:
-	docker-compose run --rm app ./vendor/bin/phpcbf
+	docker compose run --rm app ./vendor/bin/phpcbf

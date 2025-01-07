@@ -7,5 +7,3 @@ updates:
     directory: "/" # Location of package manifests
     schedule:
       interval: "weekly"
-    # Disabling automated updates until the end of the campaign 2024-12-31
-    open-pull-requests-limit: 0

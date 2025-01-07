@@ -63,5 +63,5 @@ To run the PHPUnit tests run
 
 To run a subset of PHPUnit tests or otherwise pass flags to PHPUnit, run
 
-    docker-compose run --rm app ./vendor/bin/phpunit --filter SomeClassNameOrFilter
+    docker compose run --rm app ./vendor/bin/phpunit --filter SomeClassNameOrFilter
 
